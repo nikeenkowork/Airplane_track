@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+
 import requests
 
 
@@ -43,20 +44,16 @@ class AeroplanesAPI(BaseAPI):
     def get_country_coords(self, country: str):
         """
         Получает координаты страны через Nominatim API.
-
-        :param country: Название страны
-        :return: tuple (lat, lon) или None
         """
-        params = {
+
+        params: dict[str, str | int | float | bool | None] = {
             "q": country,
             "format": "json",
-            "limit": 1
+            "limit": 1,
         }
 
         response = requests.get(
-            self.NOMINATIM_URL,
-            params=params,
-            headers={"User-Agent": "aeroplanes-app"}
+            self.NOMINATIM_URL, params=params, headers={"User-Agent": "aeroplanes-app"}
         )
 
         data = response.json()
@@ -86,12 +83,7 @@ class AeroplanesAPI(BaseAPI):
         lamin, lamax = lat - 5, lat + 5
         lomin, lomax = lon - 5, lon + 5
 
-        params = {
-            "lamin": lamin,
-            "lamax": lamax,
-            "lomin": lomin,
-            "lomax": lomax
-        }
+        params = {"lamin": lamin, "lamax": lamax, "lomin": lomin, "lomax": lomax}
 
         response = requests.get(self.OPENSKY_URL, params=params)
         data = response.json()

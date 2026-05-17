@@ -1,4 +1,6 @@
 import json
+
+
 class BaseStorage:
     """
     Базовый класс для хранилищ.

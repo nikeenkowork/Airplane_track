@@ -1,5 +1,5 @@
-from abstract_API import AeroplanesAPI
-from model_airplan import Aeroplane
+from src.abstract_API import AeroplanesAPI
+from src.model_airplan import Aeroplane
 
 
 class AeroplaneService:

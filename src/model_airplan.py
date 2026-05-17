@@ -27,12 +27,14 @@ class Aeroplane:
         result = []
 
         for item in raw_data:
-            result.append(cls(
-                callsign=item[1],
-                country=item[2],
-                velocity=item[9],
-                altitude=item[13]
-            ))
+            result.append(
+                cls(
+                    callsign=item[1],
+                    country=item[2],
+                    velocity=item[9],
+                    altitude=item[13],
+                )
+            )
 
         return result
 
